@@ -56,7 +56,7 @@ jobs:
       - name: Activate venv
         run: |
           source /home/runner/.cache/pypoetry/virtualenvs/auth-register-CCp-81ug-py3.8/bin/activate
-          cd $GITHUB_WORKSPACE
+          cd /home/runner/work/
 
       - name: Pytest
         run: poetry run pytest tests 
