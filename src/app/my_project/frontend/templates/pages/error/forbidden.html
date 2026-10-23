@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block css_connection %}
+    <link rel="stylesheet" href="/static/css/auth.css" />
+    <link rel="stylesheet" href="/static/css/footer.css" />
+    <link rel="stylesheet" href="/static/css/header.css" />
+    <link rel="stylesheet" href="/static/css/forbidden.css" /> 
+{% endblock %}
+
+
+{% block title %}
+Forbidden
+{% endblock %}
+
+{% block content %}
+    <div class="forbidden-img">
+        <img src="/static/img/forbidden.png" alt="Forbidden">
+    </div>
+    <div class="forbidden-button" >
+        <a class="forbidden-button-style" href="/">На главную</a>  
+    </div> 
+{% endblock content %}

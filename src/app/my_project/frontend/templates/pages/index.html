@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block css_connection %}
+  <link rel="stylesheet" href="/static/css/auth.css" />
+  <link rel="stylesheet" href="/static/css/footer.css" />
+  <link rel="stylesheet" href="/static/css/header.css" />
+{% endblock %}
+
+
+{% block title %}
+  Authenticate Page
+{% endblock %}
+
+
+{% block content %}
+  <div class="container">
+    <div class="tabs">
+      <button type="button" id="login-tab">Войти</button>
+  
+      <button type="button" id="register-tab">Регистрация</button>
+    </div> 
+  
+    <!-- LOGIN -->
+  
+    <form id="login-form">
+      <h2 class="form-title">Вход</h2>
+  
+      <div id="login-error" hidden>
+      </div>
+      <input
+        type="text"
+        id="login-username"
+        placeholder="Username"
+        name="username"
+        autocomplete="username"
+        required
+      />
+  
+      <input
+        type="password"
+        id="login-password"
+        placeholder="Password"
+        name="password"
+        autocomplete="current-password"
+        required
+      />
+  
+      <button type="submit">Войти</button>
+    </form>
+  
+    <!-- REGISTER -->
+  
+    <form id="register-form" hidden>
+      <h2 class="form-title">Регистрация</h2>
+  
+      <div id="register-error" hidden>
+      </div>
+        <input
+        type="text"
+        id="register-username"
+        placeholder="Username"
+        name="username"
+        autocomplete="username"
+        required
+      />
+ 
+
+  
+      <input
+        type="password"
+        id="register-password"
+        placeholder="Password"
+        name="password"
+        autocomplete="current-password"
+        required
+      />
+  
+      <button type="submit">Зарегистрироваться</button>
+    </form>
+  </div>
+
+
+  <script type="module" src="/static/js/presentation/app.js"></script>
+
+{% endblock %}
+ 

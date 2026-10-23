@@ -1,0 +1,18 @@
+
+.internal-server-button-style,
+.forbidden-button-style {
+    text-decoration: none;
+    color: #00796b;
+    font-size: 20px;
+    padding: 10px 20px;
+    border: 1px solid #00796b;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.5s ease;
+}
+
+.internal-server-button-style:hover,
+.forbidden-button-style:hover {
+    background: #00796b;
+    color: white;
+}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block css_connection %}
+    <link rel="stylesheet" href="/static/css/auth.css" />
+    <link rel="stylesheet" href="/static/css/footer.css" />
+    <link rel="stylesheet" href="/static/css/header.css" />
+{% endblock %}
+
+
+{% block title %}
+Internal Server
+{% endblock %}
+
+{% block content %}
+    <div class="internal-server-img">
+        <img src="/static/img/internal_server.png" alt="Internal Server">
+    </div>
+    <div class="internal-server-button" >
+        <a class="internal-server-button-style" href="/">На главную</a>  
+    </div> 
+{% endblock content %}

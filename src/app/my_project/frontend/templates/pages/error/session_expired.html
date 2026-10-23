@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block css_connection %}
+    <link rel="stylesheet" href="/static/css/auth.css" />
+    <link rel="stylesheet" href="/static/css/footer.css" />
+    <link rel="stylesheet" href="/static/css/header.css" />
+    <link rel="stylesheet" href="/static/css/session_expired.css" /> 
+{% endblock %}
+
+
+{% block title %}
+Session Expired
+{% endblock %}
+
+{% block content %}
+    <div class="session_expired-img">
+        <img src="/static/img/401.jpg" alt="Session Expired">
+    </div>
+    <div id="session_expired-text">Your session has expired or is no longer valid</div>
+    <div class="session_expired-button" >
+        <a class="session_expired-button-style" href="/">На главную</a>  
+    </div> 
+{% endblock content %}

@@ -1,0 +1,40 @@
+name: Tests
+
+on: 
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+
+
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.8"
+
+      - name: Install Redis Server
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y redis-server
+          sudo systemctl start redis-server
+
+      - name: Check Redis status
+        run: redis-cli ping
+
+      - name: Install Poetry
+        run: pip install poetry
+
+      - name: Install dependencies
+        run: poetry install
+
+      - name: Pytest
+        run: poetry run pytest tests

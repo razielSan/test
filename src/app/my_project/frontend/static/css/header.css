@@ -1,0 +1,12 @@
+#header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 100px;
+  background-color: aquamarine;
+}
+
+#logo-page {
+  width: 100px;
+  height: 100px;
+}
