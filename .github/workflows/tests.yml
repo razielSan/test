@@ -53,10 +53,9 @@ jobs:
         run: poetry install --no-interaction
 
 
-      - name: Activate venv
+      - name: Pytest
+        shell: bash -el {0}
         run: |
           source /home/runner/.cache/pypoetry/virtualenvs/auth-register-CCp-81ug-py3.8/bin/activate
-          cd /home/runner/work/
-
-      - name: Pytest
-        run: poetry run pytest tests 
+          shell: bash -el {0}
+          run: poetry run pytest tests 
