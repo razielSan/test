@@ -23,19 +23,19 @@ jobs:
 
       - name: Create .env for tests
         run: |
-          echo "DATABASE_CONNECT=${{ secrets.DATABASE_CONNECT }}" >> .env
-          echo "REDIS_HOST=${{ secrets.REDIS_HOST }}" >> .env
-          echo "REDIS_PORT=${{ secrets.REDIS_PORT }}" >> .env
-          echo "SECRET_KEY_TOKEN=${{ secrets.SECRET_KEY_TOKEN }}" >> .env
-          echo "SECRET_KEY_TOKEN=${{ secrets.c }}" >> .env
-          echo "ALGORITHM_TOKEN=${{ secrets.ALGORITHM_TOKEN }}" >> .env
-          echo "ACCESS_TOKEN_EXPIRE_MINUTES=${{ secrets.ACCESS_TOKEN_EXPIRE_MINUTES }}" >> .env
-          echo "REFRESH_TOKEN_EXPIRE_DAYSY=${{ secrets.REFRESH_TOKEN_EXPIRE_DAYSY }}" >> .env
+          echo "DATABASE_CONNECT=sqlite+aiosqlite:///database/test.db" >> .env
+          echo "REDIS_HOST=localhost" >> .env
+          echo "REDIS_PORT=6379" >> .env
+          echo "SECRET_KEY_TOKEN=12ade073afae91df03e4bbd9cc810fc3aeaacd3185a8a8d077c26c9d51b754a9" >> .env
+          echo "SECRET_KEY_TOKEN=111645154f5d195169e3ed3638b844c555dcaa7d7d2b0ee64f829ca8c82232d0" >> .env
+          echo "ALGORITHM_TOKEN=HS256" >> .env
+          echo "ACCESS_TOKEN_EXPIRE_MINUTES=10" >> .env
+          echo "REFRESH_TOKEN_EXPIRE_DAYSY=5" >> .env
 
       - name: Create .env.test for tests
         run: |
-          echo "TEST_POSTGRESQL_URL=${{ secrets.TEST_POSTGRESQL_URL }}" >> .env.test
-          echo "TEST_SQLITE_URL=${{ secrets.TEST_SQLITE_URL }}" >> .env.test
+          echo "TEST_POSTGRESQL_URL=postgresql+psycopg://fastapi:123@localhost:5432/fastapi" >> .env.test
+          echo "TEST_SQLITE_URL=sqlite+aiosqlite:///tests/test.db" >> .env.test
 
       - name: Install Redis Server
         run: |
