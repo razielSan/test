@@ -57,6 +57,6 @@ jobs:
         shell: bash -el {0}
         run: |
           source /home/runner/.cache/pypoetry/virtualenvs/auth-register-CCp-81ug-py3.8/bin/activate
-          cd $GITHUB_WORKSPACE
+          cd /home/runner/work/
           poetry run pytest tests 
 
