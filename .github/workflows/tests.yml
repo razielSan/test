@@ -13,6 +13,8 @@ on:
 jobs:
   unit-tests:
     runs-on: ubuntu-latest
+    env:
+      PYTHONPATH: .
 
     steps:
       - uses: actions/checkout@v4
@@ -58,6 +60,5 @@ jobs:
         run: |
           source /home/runner/.cache/pypoetry/virtualenvs/auth-register-CCp-81ug-py3.8/bin/activate
           cd $GITHUB_WORKSPACE
-        env:
-        PYTHONPATH: ${{ github.workspace }}
+
 
