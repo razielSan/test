@@ -47,13 +47,13 @@ jobs:
         run: redis-cli ping
 
       - name: Install Poetry
-        run: pip install poetry
+        run: pip install poetry --no-interaction
 
       - name: Install dependencies
-        run: poetry install
+        run: poetry install --no-interaction
 
       - name: Install Poetry Shell
-        run: poetry shell
+        run: poetry shell --no-interaction
 
       - name: Pytest
-        run: poetry run pytest tests
+        run: poetry run pytest tests --no-interaction
