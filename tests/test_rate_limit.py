@@ -358,3 +358,5 @@ async def test_counter_limit_by_ip(
     assert counter.name_counter == 4
 
     await test_rate_limit_service.shutdown()
+
+    assert 1 == 18
