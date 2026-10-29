@@ -1,0 +1,18 @@
+.session_expired-button-style {
+  border-radius: 5px;
+  border: 3px solid black;
+  cursor: pointer;
+  text-decoration: none;
+  background-color: aquamarine;
+  padding: 10px;
+  color: rgb(3, 0, 0);
+}
+
+.session_expired-button {
+    margin-top: 40px;
+}
+
+#session_expired-text {
+  font-size: 20px;
+  font-weight: bold;
+}

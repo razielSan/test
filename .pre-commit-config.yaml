@@ -1,0 +1,44 @@
+repos:
+  - repo: local
+    hooks:
+      - id: no-env-files
+        name: Prevent committing environment files
+        entry: python scripts/check_no_env_commit.py
+        language: system
+        pass_filenames: false
+        always_run: true
+
+      - id: ruff
+        name: Ruff — all projecg
+        entry: poetry run ruff check .
+        language: system
+        pass_filenames: false
+        always_run: true
+
+      - id: bandit
+        name: Bandit - src
+        entry: poetry run bandit -r src
+        language: system
+        pass_filenames: false
+        always_run: true
+
+      - id: codespell
+        name: Codespell - all project
+        entry: poetry run codespell .
+        language: system
+        pass_filenames: false
+        always_run: true
+
+      - id: mypy
+        name: mypy - all project
+        entry: poetry run mypy .
+        language: system
+        pass_filenames: false
+        always_run: true
+
+      # - id: trufflehog3 
+      #   name: trufflehog3  -src
+      #   entry: poetry run trufflehog3 . 
+      #   language: system
+      #   pass_filenames: false
+      #   always_run: true

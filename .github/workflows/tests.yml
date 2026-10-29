@@ -1,0 +1,63 @@
+name: Tests
+
+on: 
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+
+
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+    env:
+      PYTHONPATH: .
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.8"
+
+      - name: Create .env for tests
+        run: |
+          echo "DATABASE_CONNECT=${{ secrets.DATABASE_CONNECT }}" >> .env
+          echo "REDIS_HOST=${{ secrets.RIDIS_HOS }}" >> .env
+          echo "REDIS_PORT=${{ secrets.REDIS_PORT }}" >> .env
+          echo "SECRET_KEY_TOKEN=${{ secrets.SECRET_KEY_TOKEN }}" >> .env
+          echo "SECRET_KEY_TOKEN_REFRESH=${{ secrets.SECRET_KEY_TOKEN_REFRESH }}" >> .env
+          echo "ALGORITHM_TOKEN=${{ secrets.SECRET_KEY_TOKEN_REFRESH }}" >> .env
+          echo "ACCESS_TOKEN_EXPIRE_MINUTES=${{ secrets.ACCESS_TOKEN_EXPIRE_MINUTES }}" >> .env
+          echo "REFRESH_TOKEN_EXPIRE_DAYS=${{ secrets.REFRESH_TOKEN_EXPIRE_DAYS }}" >> .env
+
+      - name: Create .env.test for tests
+        run: |
+          echo "TEST_POSTGRESQL_URL=${{ secrets.TEST_POSTGRESQL_URL }}" >> .env.test
+          echo "TEST_SQLITE_URL=${{ secrets.TEST_SQLITE_URL }}" >> .env.test
+
+      - name: Install Redis Server
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y redis-server
+          sudo systemctl start redis-server
+
+      - name: Check Redis status
+        run: redis-cli ping
+
+      - name: Install Poetry
+        run: pip install poetry 
+
+      - name: Install dependencies
+        run: poetry install --no-interaction
+
+
+      - name: Pytest
+        shell: bash -el {0}
+        run: |
+          source /home/runner/.cache/pypoetry/virtualenvs/auth-register-CCp-81ug-py3.8/bin/activate
+          pytest tests
+        working-directory: .

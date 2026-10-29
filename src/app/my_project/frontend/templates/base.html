@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/main.css" />
+    <link rel="stylesheet" href="/static/css/error.css" />
+    {% block css_connection %} {% endblock %}
+    <title>{% block title %}{% endblock title %}</title>
+</head>
+<body>
+    <header id="header-content">
+        {% block header %}
+            <img id="logo-page" src="/static/img/logo.png" alt="logo">      
+        {% endblock header %}
+    </header>
+    <main id="page-content">
+
+        <template id="forbidden-template">
+            <div class="error-page">
+                <img src="/static/img/forbidden.png" alt="Forbidden">
+            </div>
+            <div>
+                <a class="forbidden-button-style" href="/">На главную</a>
+            </div>
+        </template>
+
+
+        <template id="internal-server-template">
+            <div class="error-page">
+                <img src="/static/img/internal_server.png" alt="Internal Server">
+            </div>
+            <div>
+                <a class="internal-server-button-style" href="/">На главную</a>
+            </div>
+        </template>
+
+        {% block content %}
+        {% endblock content %}
+    </main>
+    <footer id="footer-content">
+        {% block footer %}
+            {% include 'partials/footer.html'   %}
+        {% endblock footer %}
+    </footer>
+</body>
+</html>

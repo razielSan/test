@@ -1,0 +1,12 @@
+#footer-content {
+  display: flex;
+  justify-content: center;
+  justify-content: center;
+  min-height: 100px;
+  background: wheat;
+}
+
+#footer-img {
+  width: 200px;
+  height: 100px;
+}

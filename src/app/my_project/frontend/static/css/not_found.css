@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.not_found-img,
+.not_found-button {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.not_found-button-style {
+  border-radius: 5px;
+  border: 3px solid black;
+  cursor: pointer;
+  text-decoration: none;
+  background-color: aquamarine;
+  padding: 10px;
+  color: rgb(3, 0, 0);
+}

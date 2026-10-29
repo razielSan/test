@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block css_connection %}
+  <link rel="stylesheet" href="/static/css/user.css" />  
+  <link rel="stylesheet" href="/static/css/footer.css" /> 
+  <link rel="stylesheet" href="/static/css/header.css" />  
+{% endblock %}
+
+
+{% block title %}
+  User page
+{% endblock %}
+
+
+{% block header %}
+  {% include 'partials/header.html' %}
+{% endblock header %}
+
+
+{% block content %}
+    <h2>My personal page</h2>
+    <script type="module" src="/static/js/presentation/user.js"></script>
+{% endblock content %}
