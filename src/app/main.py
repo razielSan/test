@@ -13,4 +13,3 @@ def run() -> None:
         port=settings.PORT,
         app=settings.APP,
     )
-

@@ -1,0 +1,54 @@
+# Environment variables and secrets
+
+.env
+.env.test
+.env.proxy
+.env.*
+!.env.example
+!.env.*.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+*.egg-info/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Type checking and linting
+
+.mypy_cache
+.pytest_cache
+.ruff_cache
+
+# Coverage
+.coverage
+.coverage.*
+htmlcov/
+
+# IDE
+.vscode
+
+# Logs
+
+*.logs
+logs/
+
+# locald databases
+
+*.db
+*.sqlite3
+*.sqlite
+
+# OS files
+Thumbs.db
+desktop.ini
+
+# Folders and files
+poetry_install.py
+poetry_update.py
+check_code.py
