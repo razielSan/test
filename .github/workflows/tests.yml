@@ -32,7 +32,8 @@ jobs:
         run: poetry  config virtualenvs.in-project true
 
       - name: Install dependencies
-        run: poetry install 
+        run: poetry install --with dev --no-interaction
+
 
       - name: Create .env for tests
         run: | 
@@ -46,7 +47,7 @@ jobs:
           echo "REFRESH_TOKEN_EXPIRE_DAYS=${{ secrets.REFRESH_TOKEN_EXPIRE_DAYS }}" >> .env
 
       - name: Create .env.test for tests
-        run: 
+        run: |
           echo "TEST_POSTGRESQL_URL=${{ secrets.TEST_POSTGRESQL_URL }}"  >> .env.test
           echo "TEST_SQLITE_URL=${{ secrets.TEST_SQLITE_URL }}"st >> .env.tests
 
