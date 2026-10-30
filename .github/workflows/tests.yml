@@ -32,37 +32,23 @@ jobs:
         run: poetry  config virtualenvs.in-project true
 
       - name: Install dependencies
-        run: poetry install --with dev --no-interaction
+        run: poetry install 
 
       - name: Create .env for tests
-        env: 
-          echo "DATABASE_CONNECT=${{ secrets.DATABASE_CONNECT }}" 
-          echo "REDIS_HOST=${{ secrets.RIDIS_HOST }}" 
-          echo "REDIS_PORT=${{ secrets.REDIS_PORT }}" 
-          echo "SECRET_KEY_TOKEN=${{ secrets.SECRET_KEY_TOKEN }}"
-          echo "SECRET_KEY_TOKEN_REFRESH=${{ secrets.SECRET_KEY_TOKEN_REFRESH }}"
-          echo "ALGORITHM_TOKEN=${{ secrets.ALGORITHM_TOKEN }}" 
-          echo "ACCESS_TOKEN_EXPIRE_MINUTES=${{ secrets.ACCESS_TOKEN_EXPIRE_MINUTES }}" 
-          echo "REFRESH_TOKEN_EXPIRE_DAYS=${{ secrets.REFRESH_TOKEN_EXPIRE_DAYS }}" 
-        run: |
-          printf '%s\n' \
-            "DATABASE_CONNECT=$DATABASE_CONNECT" \
-            "REDIS_HOST=$REDIS_HOST" \
-            "REDIS_PORT=$REDIS_PORT" \
-            "SECRET_KEY_TOKEN=$SECRET_KEY_TOKEN" \
-            "SECRET_KEY_TOKEN_REFRESH=$SECRET_KEY_TOKEN_REFRESH" \
-            "ALGORITHM_TOKEN=$ALGORITHM_TOKEN" \
-            "ACCESS_TOKEN_EXPIRE_MINUTES=$ACCESS_TOKEN_EXPIRE_MINUTES" \
-            "REFRESH_TOKEN_EXPIRE_DAYS=$REFRESH_TOKEN_EXPIRE_DAYS" > .env
+        run: | 
+          echo "DATABASE_CONNECT=${{ secrets.DATABASE_CONNECT }}" >> .env
+          echo "REDIS_HOST=${{ secrets.RIDIS_HOST }}" >> .env
+          echo "REDIS_PORT=${{ secrets.REDIS_PORT }}" >> .env
+          echo "SECRET_KEY_TOKEN=${{ secrets.SECRET_KEY_TOKEN }}" >> .env
+          echo "SECRET_KEY_TOKEN_REFRESH=${{ secrets.SECRET_KEY_TOKEN_REFRESH }}" >> .env
+          echo "ALGORITHM_TOKEN=${{ secrets.ALGORITHM_TOKEN }}" >> .env
+          echo "ACCESS_TOKEN_EXPIRE_MINUTES=${{ secrets.ACCESS_TOKEN_EXPIRE_MINUTES }}" >> .env
+          echo "REFRESH_TOKEN_EXPIRE_DAYS=${{ secrets.REFRESH_TOKEN_EXPIRE_DAYS }}" >> .env
 
       - name: Create .env.test for tests
-        env: 
-          echo "TEST_POSTGRESQL_URL=${{ secrets.TEST_POSTGRESQL_URL }}" 
-          echo "TEST_SQLITE_URL=${{ secrets.TEST_SQLITE_URL }}"
-        run: |
-          printf "%s\n" \
-            "TEST_POSTGRESQL_URL=%TEST_POSTGRESQL_URL" \
-            "TEST_SQLITE_URL=%TEST_SQLITE_URL" > .env.test
+        run: 
+          echo "TEST_POSTGRESQL_URL=${{ secrets.TEST_POSTGRESQL_URL }}"  >> .env.test
+          echo "TEST_SQLITE_URL=${{ secrets.TEST_SQLITE_URL }}"st >> .env.tests
 
       - name: Install Redis Server
         run: |
