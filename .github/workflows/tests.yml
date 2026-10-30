@@ -13,9 +13,6 @@ on:
 jobs:
   unit-tests:
     runs-on: ubuntu-latest
-    env:
-      PYTHONPATH: .
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -49,7 +46,7 @@ jobs:
       - name: Create .env.test for tests
         run: |
           echo "TEST_POSTGRESQL_URL=${{ secrets.TEST_POSTGRESQL_URL }}"  >> .env.test
-          echo "TEST_SQLITE_URL=${{ secrets.TEST_SQLITE_URL }}"st >> .env.tests
+          echo "TEST_SQLITE_URL=${{ secrets.TEST_SQLITE_URL }}" >> .env.test
 
       - name: Install Redis Server
         run: |
