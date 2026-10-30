@@ -32,16 +32,24 @@ jobs:
         run: poetry install --with dev --no-interaction
 
 
-      - name: Create .env for tests
-        run: | 
-          echo "DATABASE_CONNECT=${{ secrets.DATABASE_CONNECT }}" >> .env
-          echo "REDIS_HOST=${{ secrets.RIDIS_HOST }}" >> .env
-          echo "REDIS_PORT=${{ secrets.REDIS_PORT }}" >> .env
-          echo "SECRET_KEY_TOKEN=${{ secrets.SECRET_KEY_TOKEN }}" >> .env
-          echo "SECRET_KEY_TOKEN_REFRESH=${{ secrets.SECRET_KEY_TOKEN_REFRESH }}" >> .env
-          echo "ALGORITHM_TOKEN=${{ secrets.ALGORITHM_TOKEN }}" >> .env
-          echo "ACCESS_TOKEN_EXPIRE_MINUTES=${{ secrets.ACCESS_TOKEN_EXPIRE_MINUTES }}" >> .env
-          echo "REFRESH_TOKEN_EXPIRE_DAYS=${{ secrets.REFRESH_TOKEN_EXPIRE_DAYS }}" >> .env
+      - name: Create .env
+        env:
+          DATABASE_CONNECT: ${{ secrets.DATABASE_CONNECT }}
+          SECRET_KEY_TOKEN: ${{ secrets.SECRET_KEY_TOKEN }}
+          SECRET_KEY_TOKEN_REFRESH: ${{ secrets.SECRET_KEY_TOKEN_REFRESH }}
+          ALGORITHM_TOKEN: ${{ secrets.ALGORITHM_TOKEN }}
+          ACCESS_TOKEN_EXPIRE_MINUTES: ${{ secrets.ACCESS_TOKEN_EXPIRE_MINUTES }}
+          REFRESH_TOKEN_EXPIRE_DAYS: ${{ secrets.REFRESH_TOKEN_EXPIRE_DAYS }}
+        run: |
+          printf '%s\n' \
+            "DATABASE_CONNECT=$DATABASE_CONNECT" \
+            "REDIS_HOST=localhost" \
+            "REDIS_PORT=6379" \
+            "SECRET_KEY_TOKEN=$SECRET_KEY_TOKEN" \
+            "SECRET_KEY_TOKEN_REFRESH=$SECRET_KEY_TOKEN_REFRESH" \
+            "ALGORITHM_TOKEN=$ALGORITHM_TOKEN" \
+            "ACCESS_TOKEN_EXPIRE_MINUTES=$ACCESS_TOKEN_EXPIRE_MINUTES" \
+            "REFRESH_TOKEN_EXPIRE_DAYS=$REFRESH_TOKEN_EXPIRE_DAYS" > .env
 
       - name: Create .env.test for tests
         run: |
