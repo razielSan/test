@@ -35,15 +35,15 @@ jobs:
         run: poetry install --with dev --no-interaction
 
       - name: Create .env for tests
-        env: |
-          echo "DATABASE_CONNECT=${{ secrets.DATABASE_CONNECT }}" >> .env
-          echo "REDIS_HOST=${{ secrets.RIDIS_HOST }}" >> .env
-          echo "REDIS_PORT=${{ secrets.REDIS_PORT }}" >> .env
-          echo "SECRET_KEY_TOKEN=${{ secrets.SECRET_KEY_TOKEN }}" >> .env
-          echo "SECRET_KEY_TOKEN_REFRESH=${{ secrets.SECRET_KEY_TOKEN_REFRESH }}" >> .env
-          echo "ALGORITHM_TOKEN=${{ secrets.ALGORITHM_TOKEN }}" >> .env
-          echo "ACCESS_TOKEN_EXPIRE_MINUTES=${{ secrets.ACCESS_TOKEN_EXPIRE_MINUTES }}" >> .env
-          echo "REFRESH_TOKEN_EXPIRE_DAYS=${{ secrets.REFRESH_TOKEN_EXPIRE_DAYS }}" >> .env
+        env: 
+          echo "DATABASE_CONNECT=${{ secrets.DATABASE_CONNECT }}" 
+          echo "REDIS_HOST=${{ secrets.RIDIS_HOST }}" 
+          echo "REDIS_PORT=${{ secrets.REDIS_PORT }}" 
+          echo "SECRET_KEY_TOKEN=${{ secrets.SECRET_KEY_TOKEN }}"
+          echo "SECRET_KEY_TOKEN_REFRESH=${{ secrets.SECRET_KEY_TOKEN_REFRESH }}"
+          echo "ALGORITHM_TOKEN=${{ secrets.ALGORITHM_TOKEN }}" 
+          echo "ACCESS_TOKEN_EXPIRE_MINUTES=${{ secrets.ACCESS_TOKEN_EXPIRE_MINUTES }}" 
+          echo "REFRESH_TOKEN_EXPIRE_DAYS=${{ secrets.REFRESH_TOKEN_EXPIRE_DAYS }}" 
         run: |
           printf '%s\n' \
             "DATABASE_CONNECT=$DATABASE_CONNECT" \
@@ -56,9 +56,9 @@ jobs:
             "REFRESH_TOKEN_EXPIRE_DAYS=$REFRESH_TOKEN_EXPIRE_DAYS" > .env
 
       - name: Create .env.test for tests
-        env: |
-          echo "TEST_POSTGRESQL_URL=${{ secrets.TEST_POSTGRESQL_URL }}" >> .env.test
-          echo "TEST_SQLITE_URL=${{ secrets.TEST_SQLITE_URL }}" >> .env.test
+        env: 
+          echo "TEST_POSTGRESQL_URL=${{ secrets.TEST_POSTGRESQL_URL }}" 
+          echo "TEST_SQLITE_URL=${{ secrets.TEST_SQLITE_URL }}"
         run: |
           printf "%s\n" \
             "TEST_POSTGRESQL_URL=%TEST_POSTGRESQL_URL" \
