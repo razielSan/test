@@ -20,7 +20,7 @@ jobs:
       - name: Setup python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.8"
+          python-version: "3.10"
 
       - name: Install Poetry
         run: pip install poetry 
@@ -34,7 +34,6 @@ jobs:
 
       - name: Create .env
         env:
-          DATABASE_CONNECT: ${{ secrets.DATABASE_CONNECT }}
           SECRET_KEY_TOKEN: ${{ secrets.SECRET_KEY_TOKEN }}
           SECRET_KEY_TOKEN_REFRESH: ${{ secrets.SECRET_KEY_TOKEN_REFRESH }}
           ALGORITHM_TOKEN: ${{ secrets.ALGORITHM_TOKEN }}
@@ -42,7 +41,7 @@ jobs:
           REFRESH_TOKEN_EXPIRE_DAYS: ${{ secrets.REFRESH_TOKEN_EXPIRE_DAYS }}
         run: |
           printf '%s\n' \
-            "DATABASE_CONNECT=$DATABASE_CONNECT" \
+            "DATABASE_CONNECT=sqlite+aiosqlite:///test.db" \
             "REDIS_HOST=localhost" \
             "REDIS_PORT=6379" \
             "SECRET_KEY_TOKEN=$SECRET_KEY_TOKEN" \
