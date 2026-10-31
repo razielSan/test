@@ -47,7 +47,7 @@ jobs:
       - name: Create .env.test for tests
         run: |
           printf '%s\n' \
-            "TEST_POSTGRESQL_URL=postgresql+psycopg://postgresql_url" \
+            "TEST_POSTGRESQL_URL=meaning-plug" \
             "TEST_SQLITE_URL=sqlite+aiosqlite:///tests/test.db" \ -> .env.test
 
       - name: Install Redis Server
@@ -61,4 +61,4 @@ jobs:
 
 
       - name: Pytest
-        run: poetry run pytest tests
+        run: poetry run pytest test

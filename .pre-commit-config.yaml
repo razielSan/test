@@ -10,7 +10,7 @@ repos:
         always_run: true
 
       - id: ruff
-        name: Ruff — all projecg
+        name: Ruff — all project
         entry: poetry run ruff check .
         description: It identifies style issues (PEP 8), unused imports, and vulnerabilities.
         language: system
