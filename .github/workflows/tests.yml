@@ -33,22 +33,25 @@ jobs:
 
 
       - name: Create .env
+        env:
+          SECRET_KEY_TOKEN: ${{ secrets.SECRET_KEY_TOKEN }}
+          SECRET_KEY_TOKEN_REFRESH: ${{ secrets.SECRET_KEY_TOKEN_REFRESH }}
+          ALGORITHM_TOKEN: ${{ secrets.ALGORITHM_TOKEN }}
         run: |
           printf '%s\n' \
             "DATABASE_CONNECT=sqlite+aiosqlite:///test.db" \
             "REDIS_HOST=localhost" \
             "REDIS_PORT=6379" \
-            "SECRET_KEY_TOKEN=cli-only-access-key-not-for-production-123" \
-            "SECRET_KEY_TOKEN_REFRESH=cli-only-refresh-key-not-for-production-123" \
-            "ALGORITHM_TOKEN=HS256" \
+            "SECRET_KEY_TOKEN=$SECRET_KEY_TOKEN" \
+            "SECRET_KEY_TOKEN_REFRESH=$SECRET_KEY_TOKEN_REFRESH" \
+            "ALGORITHM_TOKEN=$ALGORITHM_TOKEN" \
             "ACCESS_TOKEN_EXPIRE_MINUTES=20" \
             "REFRESH_TOKEN_EXPIRE_DAYS=1" > .env
 
       - name: Create .env.test for tests
         run: |
-          printf '%s\n' \
-            "TEST_POSTGRESQL_URL=postgresql+psycopg://..." \
-            "TEST_SQLITE_URL=sqlite+aiosqlite:///tests/test.db " \ -> .env
+          echo "TEST_POSTGRESQL_URL=${{ secrets.TEST_POSTGRESQL_URL }}"  >> .env.test
+          echo "TEST_SQLITE_URL=${{ secrets.TEST_SQLITE_URL }}" >> .env.test
 
       - name: Install Redis Server
         run: |
