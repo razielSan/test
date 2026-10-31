@@ -49,7 +49,7 @@ jobs:
         run: |
           cat << 'EOF' > .env.test
           TEST_POSTGRESQL_URL=postgresql+psycopg://posegresql_url
-          TEST_SQLITE_URL=sqlite+aiosqlite:///tests/test.db
+          TEST_SQLITE_URL=sqlite+aiosqlite:///test.db
           EOF
 
       - name: Install Redis Server
