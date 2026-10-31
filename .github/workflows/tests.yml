@@ -45,15 +45,15 @@ jobs:
           SECRET_KEY_TOKEN_REFRESH=cli-key-only-fefresh-key-not-for-production=123
           EOF
 
-      # - name: Check .env file
-      #   run: |
-      #     if [ -f .env ]; then
-      #       echo ".env file exists"
-      #       sed 's/=.*/=REDACTED/' .env
-      #     else
-      #       echo ".env file not found!"
-      #       exit 1
-      #     fi
+      - name: Check .env file
+        run: |
+          if [ -f .env ]; then
+            echo ".env file exists"
+            sed 's/=.*/=REDACTED/' .env
+          else
+            echo ".env file not found!"
+            exit 1
+          fi
 
       - name: Create .env.test for tests
         run: |
