@@ -58,7 +58,6 @@ jobs:
       - name: Create .env.test for tests
         run: |
           cat << 'EOF' > .env.test
-          TEST_POSTGRESQL_URL=posgres
           TEST_SQLITE_URL=sqlite+aiosqlite:///test.db
           EOF
 

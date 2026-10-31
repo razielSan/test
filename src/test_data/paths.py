@@ -10,7 +10,7 @@ from settings.paths import ROOT_DIR
 
 
 class TestDataBaseUrl(BaseSettings):
-    TEST_POSTGRESQL_URL: str = "database_name+driver_name://...."
+    TEST_POSTGRESQL_URL: str = "postgresql+psycopg://...."
     TEST_SQLITE_URL: str = "database_name+driver_name://...."
 
     model_config = SettingsConfigDict(
