@@ -10,7 +10,7 @@ from settings.paths import ROOT_DIR
 
 
 class TestDataBaseUrl(BaseSettings):
-    TEST_POSTGRESQL_URL: str = "postgresql+psycopg://...."
+    TEST_POSTGRESQL_URL: str = "database_name+driver_name://...."
     TEST_SQLITE_URL: str = "database_name+driver_name://...."
 
     model_config = SettingsConfigDict(
@@ -19,7 +19,7 @@ class TestDataBaseUrl(BaseSettings):
 
     @property
     def delete_test_sqlite_path(self) -> Optional[Path]:
-        url = make_url(self.TEST_POSTGRESQL_URL).database
+        url = make_url(self.TEST_SQLITE_URL).database
         if url is None:
             return None
         return ROOT_DIR / Path(url)

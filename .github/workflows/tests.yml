@@ -67,7 +67,7 @@ jobs:
             echo ".env.test file exists"
             sed 's/=.*/=REDACTED/' .env.test
           else
-            echo ".env file not found!"
+            echo ".env.test file not found!"
             exit 1
           fi
 
