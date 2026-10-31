@@ -17,6 +17,7 @@ jobs:
         include:
           - python-version: "3.8.10"
             os: ubuntu-22.04
+    runs-on: ${{ matrix.os }}
     # runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
