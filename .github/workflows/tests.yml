@@ -48,7 +48,7 @@ jobs:
         run: |
           printf '%s\n' \
             "TEST_POSTGRESQL_URL=postgresql+psycopg://.... \
-            "TEST_SQLITE_URL=sqlite+aiosqlite:///tests/test.db" \
+            "TEST_SQLITE_URL=sqlite+aiosqlite:///tests/test.db" \ -> .env
 
       - name: Install Redis Server
         run: |
