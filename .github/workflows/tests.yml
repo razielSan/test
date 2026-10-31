@@ -64,7 +64,7 @@ jobs:
 
       - name: Check .env.test file
         run: |
-          if [ -f .env.enx ]; then
+          if [ -f .env.test ]; then
             echo ".env.test file exists"
             sed 's/=.*/=REDACTED/' .env.test
           else
