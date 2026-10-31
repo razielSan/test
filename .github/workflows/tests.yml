@@ -20,7 +20,8 @@ jobs:
       - name: Setup python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.10"
+          python-version: "3.8.10"
+          os: ubuntu-22.04
 
       - name: Install Poetry
         run: pip install poetry 
