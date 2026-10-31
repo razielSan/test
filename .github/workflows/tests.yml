@@ -46,9 +46,10 @@ jobs:
 
       - name: Create .env.test for tests
         run: |
-          printf "%s\n" \
-            "TEST_POSTGRESQL_URL=postgresql+psycopg://posegresql_url \
-            "TEST_SQLITE_URL=sqlite+aiosqlite:///tests/test.db" > .env.test
+          cat << 'EOF' > .env.test
+              TEST_POSTGRESQL_URL=postgresql+psycopg://posegresql_url
+              TEST_SQLITE_URL=sqlite+aiosqlite:///tests/test.db
+              EOF
 
       - name: Install Redis Server
         run: |
