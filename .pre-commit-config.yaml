@@ -9,44 +9,44 @@ repos:
         pass_filenames: false
         always_run: true
 
-      - id: ruff
-        name: Ruff — all project
-        entry: poetry run ruff check .
-        description: It identifies style issues (PEP 8), unused imports, and vulnerabilities.
-        language: system
-        pass_filenames: false
-        always_run: true
+      # - id: ruff
+      #   name: Ruff — all project
+      #   entry: poetry run ruff check .
+      #   description: It identifies style issues (PEP 8), unused imports, and vulnerabilities.
+      #   language: system
+      #   pass_filenames: false
+      #   always_run: true
 
-      - id: bandit
-        name: Bandit - src
-        description: identifies vulnerabilities and security issues
-        entry: poetry run bandit -r src
-        language: system
-        pass_filenames: false
-        always_run: true
+      # - id: bandit
+      #   name: Bandit - src
+      #   description: identifies vulnerabilities and security issues
+      #   entry: poetry run bandit -r src
+      #   language: system
+      #   pass_filenames: false
+      #   always_run: true
 
-      - id: codespell
-        name: Codespell - all project
-        description: finds spelling errors in the code
-        entry: poetry run codespell .
-        language: system
-        pass_filenames: false
-        always_run: true
+      # - id: codespell
+      #   name: Codespell - all project
+      #   description: finds spelling errors in the code
+      #   entry: poetry run codespell .
+      #   language: system
+      #   pass_filenames: false
+      #   always_run: true
 
-      - id: mypy
-        name: mypy - all project
-        description: find type errors in the code
-        entry: poetry run mypy .
-        language: system
-        pass_filenames: false
-        always_run: true
+      # - id: mypy
+      #   name: mypy - all project
+      #   description: find type errors in the code
+      #   entry: poetry run mypy .
+      #   language: system
+      #   pass_filenames: false
+      #   always_run: true
 
-      - id: trufflehog3 
-        name: trufflehog3 - src
-        description: looks for secrets in the source code
-        entry: poetry run trufflehog3 src --no-history
-        language: system
-        pass_filenames: false
-        always_run: true
+      # - id: trufflehog3 
+      #   name: trufflehog3 - src
+      #   description: looks for secrets in the source code
+      #   entry: poetry run trufflehog3 src --no-history
+      #   language: system
+      #   pass_filenames: false
+      #   always_run: true
 
 

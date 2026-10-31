@@ -46,7 +46,7 @@ jobs:
 
       - name: Create .env.test for tests
         run: |
-          printf '%s\n' \
+          printf "%s\n" \
             "TEST_POSTGRESQL_URL=meaning-plug" \
             "TEST_SQLITE_URL=sqlite+aiosqlite:///tests/test.db" > .env.test
 
